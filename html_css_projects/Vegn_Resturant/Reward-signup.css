@@ -1,0 +1,62 @@
+html
+{
+    background-image: url('rewardsbackground1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Playfair Display', serif;
+}
+:root
+{
+    --main-red: #87212B;
+    --main-white: white;
+}
+#veg-nlogo
+{
+    background-color: var(--main-white);
+    width: 100px;
+    padding: 35px 5px 35px 5px;
+    text-align: center;
+    margin-bottom: -20px;
+    box-shadow: 5px 5px lightgrey;
+}
+#veg-nlogo img
+{
+    width: 90px;
+}
+#rewardsignup
+{
+    background-color: var(--main-white);
+    width: 27%;
+    border: 2px solid black;
+    margin: 0 auto;
+    padding: 60px 40px 60px 40px;
+    margin-top: 100px;
+}
+#rewardsinformation
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    bottom: 80px;
+}
+#rewardsinformation h4
+{
+    font-size:17px;
+    font-weight: 500;
+}
+#rewardsinformation h3
+{
+
+}
+#rewardsinformation p
+{
+
+}
+
+#rewardsdescription
+{
+    
+}

@@ -1,0 +1,136 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="resturant.css">
+        <script src="https://kit.fontawesome.com/2df9a2471b.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header id="header">
+            <nav>
+                <ul>
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="">Catering</a></li>
+                    <img src="VEG-N1.jpg" alt="logo" id="logo">
+                    <li><a href="#">Gift Cards</a></li>
+                    <li><a href="#">Rewards</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div id="main-information">
+            <div id="takeout">
+                <section id="address">
+                    <h1>PLANT-BASED<br />FOOD FAST</h1>
+                    <p>FUELING A VEGAN FUTURE</p>
+                    <p>902 E. Cesar E. Chavez<br />Lansing MI, 48906</p>
+                </section>
+                <section id="order">
+                    <div id="ordertakeout"><a href="https://www.toasttab.com/veg-n-old-town-lansing/v3">ORDER TAKEOUT</a>
+                    </div>
+                    <div id="orderdelivery"><a href="https://www.grubhub.com/restaurant/veg-n-902-e-csar-e-chvez-ave-lansing/2931415?classicAffiliateId=%2Fr%2Fw%2F2931415%2Frestaurant%2F2931415">ORDER DELIVERY</a>
+                    </div>
+                </section>
+                <section id="arrow">
+                    <i class="fa-solid fa-arrow-down"></i>
+                </section>
+            </div>
+            <div id="rewards">
+                <h2>Start Earning Rewards!</h2>
+                <p>Become a VEG-N Rewards member to collect points<br />
+                    to earn free food, drinks, a birthday treat & more.
+                </p>
+                <img src="drink.jpg" alt=" A drink">
+            </div>
+            </div>
+            <div id="story">
+                <p>OUR STORY</p><br /><br />
+                <h1>Welcome To VEG-N</h1><br />
+                <p>We are going to chnage the world, but first we eat!</p>
+            </div>
+            <div id="menu">
+                <p>ONLY THE BEST</p><br /><br />
+                <h2>Fresh Ingredient, Tasty Meals</h2><br />
+                <p>We strive to bring the best quality ingredients, combined into top notch flavors!</p>
+                <div><a  href="#">VIEW MENU</a></div>
+            </div>
+            <div>
+                <div id="hours">
+                    <div id="left">
+                        <h3>Hours of Operation</h3><br />
+                        <p><strong>MON</strong></p>
+                        <p>11:30am - 8:00pm</p>
+                        <p><strong>TUES</strong></p>
+                        <p>We are closed</p>
+                        <p><strong>WED - SAT</strong></p>
+                        <p>11:30am - 8:00pm</p><br />
+                        <p><strong>SUN</strong></p>
+                        <p>We are closed</p>
+                        <div><a href="#">ORDER NOW</a></div>
+                    </div>
+                    <div id="right">
+                        <section id="contactustop">
+                            <h4>Drop Us a Line</h4>
+                            <p>Don't be shy. Let us know if you have any questions!</p>
+                            <div>CONTACT US</div>
+                        </section>
+                        <section id="contactusbottom">
+                            <h4>Our Newsletter</h4>
+                            <p>Dialogue is an essential part of any script</p>
+                            <form action="/#">
+                                <input type="text" id="first_name" name="first_name" placeholder="First Name">
+                                <label for="first_name"></label><br />
+                                <input type="text" id="last_name" name="last_name" placeholder="Last Name">
+                                <label for="last_name"></label><br />
+                                <input type="email" id="email" name="email" placeholder="Email">
+                                <label for="email"></label><br />
+                                <input type="submit" id="submit" value="CONTACT US">
+                              </form>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+
+        </footer>
+    <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>

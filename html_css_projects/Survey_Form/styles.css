@@ -1,0 +1,77 @@
+body
+{
+    width: 100%;
+    height: 100vh;
+    background-image: url(thecookiedoughcafe.jpeg);
+    color: white;
+    font-family: Tahoma;
+    font-size: 16px;
+}
+
+h1, h4
+{
+    margin: 1em auto;
+    text-align: center;
+    max-width: 500px;
+    min-width: 300px;
+}
+
+form
+{
+    width: 60vw;
+    max-width: 500px;
+    min-width: 300px;
+    margin: 0 auto;
+    padding: 1em;
+    background-color: rgb(133, 219, 203);
+    border: 0.5px solid black;
+    border-radius: 5px;
+}
+
+fieldset
+{
+    border: none;
+    padding: 0.7rem 0;
+}
+input, textarea, select
+{
+    margin: 10px 0 0 0;
+    width: 100%;
+    min-height: 2em;
+}
+
+input, textarea
+{
+    background-color: white;
+    border: 0.5px solid black;
+}
+textarea
+{
+    padding-bottom: 20px;
+}
+
+label
+{
+    display: block;
+    margin: 0.5rem 0;
+    float: none;
+}
+
+.inline
+{
+    width: unset;
+    margin: 0 0.5 0 0;
+    vertical-align:sub;
+}
+
+button
+{
+    display: block;
+    width: 50%;
+    margin: 1em auto;
+    height: 2em;
+    font-size: 1.1rem;
+    background-color: white;
+    border: 0.5px solid black
+}
+
