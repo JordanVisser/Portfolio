@@ -133,6 +133,19 @@
     font-style: italic;
     color: var(--main-light);
   }
+
+#seemore {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+    font-style: italic;
+  }
+  
+  #seemore i{
+    margin-top: 10px;
+  }
   
   
   .projects-section {
