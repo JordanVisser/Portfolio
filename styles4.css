@@ -133,15 +133,6 @@ img {
   font-style: italic;
   color: var(--main-light);
 }
-
-.welcome-section > i {
-  font-size: 3rem;
-  font-weight: 200;
-  font-style: italic;
-  color: var(--main-light);
-}
-
-
 .projects-section {
   text-align: center;
   padding: 10rem 2rem;
