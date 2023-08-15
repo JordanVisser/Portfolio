@@ -132,6 +132,7 @@ img {
   font-weight: 200;
   font-style: italic;
   color: var(--main-light);
+  text-align: center;
 }
 #seemore {
     display: flex;
