@@ -1,0 +1,81 @@
+---
+title: "Project 2"
+author: "Jordan Visser"
+date: "2023-08-15"
+output: html_document
+---
+
+```{r}
+setwd("/Users/jordanvisser/Documents/550")
+apdata <- read.csv("APprediction.csv", stringsAsFactors = TRUE)
+apdata$ID <- as.factor(apdata$ID)
+
+```
+
+```{r}
+Q1 <- dim(apdata)
+```
+
+```{r}
+Q2 <- summary(apdata$ACTUAL)
+```
+
+```{r}
+Q3 <- table(apdata$ACTUAL)
+```
+
+```{r}
+Q4 <- summary(apdata$PSAT)
+```
+
+```{r}
+Q5 <- sum(is.na(apdata$PSAT))
+```
+
+```{r}
+hist(apdata$ACTUAL)
+```
+
+```{r}
+hist(apdata$PSAT)
+```
+
+```{r}
+NA_PSAT_index <- which(is.na(apdata$PSAT))
+```
+
+```{r}
+Q10 <- apdata[NA_PSAT_index, c('PSAT','ACTUAL')]
+```
+
+```{r}
+apdata_PSATnoNA <- apdata[-NA_PSAT_index, c('PSAT','ACTUAL')]
+```
+
+```{r}
+Q12 <- sum(apdata_PSATnoNA$ACTUAL == 0)
+```
+
+```{r}
+apdata_almost_clean <- apdata_PSATnoNA[apdata_PSATnoNA$ACTUAL >= 1, c("PSAT", "ACTUAL")]
+```
+
+```{r}
+apdata_clean <- apdata_almost_clean[apdata_almost_clean > 300, c("PSAT", "ACTUAL")]
+```
+
+```{r}
+mod1 <- lm(ACTUAL ~ PSAT, data = apdata_clean)
+```
+
+```{r}
+Q16 <- predict(mod1, apdata_clean[1,])
+```
+
+```{r}
+Q17 <- summary(lm(ACTUAL~PSAT, data = apdata_clean))
+```
+
+```{r}
+Q18 <- cor(apdata_clean$ACTUAL,apdata_clean$PSAT, use="complete.obs")
+``

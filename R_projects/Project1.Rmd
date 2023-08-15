@@ -1,0 +1,116 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library('ggplot2')
+
+data(txhousing)
+
+names(txhousing)
+class(txhousing)
+dim(txhousing)
+
+```
+```{r}
+Q1 <- c(class(txhousing), dim(txhousing))
+```
+
+```{r}
+Q2 <- ls.str(txhousing)
+```
+
+```{r}
+Q3 <- summary(txhousing$median)
+```
+
+```{r}
+Q4 <- table(txhousing$year)
+```
+
+```{r}
+Q5 <- length(unique(txhousing$city))
+unique(txhousing$city)
+```
+
+```{r}
+Q6 <- boxplot(txhousing$sales, horizontal = TRUE, xlab ="Sales", main="Large Variability in sales in Texas houses from 2000-2015")
+```
+
+```{r}
+Q7 <- boxplot(txhousing$sales ~ txhousing$year, horizontal = TRUE, xlab = "Sales", 
+ylab = "Year", frame=FALSE, las=1)
+```
+
+```{r}
+q8a <- boxplot(txhousing$median,
+               horizontal= TRUE, 
+              xlab = 'Median Sale Price ($)',
+              main = 'Housing prices in Texas (2000-2015)',
+              frame = FALSE)
+```
+
+```{r}
+qb <- boxplot(txhousing$median ~ txhousing$year,
+        horizontal = TRUE,
+        xlab = 'Median Sale Price ($)',
+        ylab = 'Year',
+        main = 'Housing prices in Texas (2000-2015)',
+        las = 1,
+        col = 'lightgreen',
+        frame = FALSE)
+```
+
+```{r}
+Q10 <- sum(is.na(txhousing$median))
+```
+
+```{r}
+Q11 <- sum(is.na(txhousing$median)) / length(txhousing$median)
+```
+
+```{r}
+Q12 <- which(is.na(txhousing$median))
+```
+
+```{r}
+Q13 <- txhousing[Q12, c('city','year','sales','median')]
+```
+
+```{r}
+Q14 <- txhousing[-Q12, c('city','year','sales','median','month')]
+```
+
+```{r}
+txhousing_clean <- txhousing[-Q12,c('city','year','sales','median','month')]
+
+cor(txhousing$median, txhousing$listings, use='complete.obs')
+
+modl <- lm(median~sales, data=txhousing_clean)
+```
+
+```{r}
+txhousing_clean[1,c('sales','median')]
+predict(modl, txhousing_clean[1,])
+```
+
+```{r}
+Q16 <- 121741.82 + 11.57 * 72
+```
+
+```{r}
+Q17 <- summary(modl)
+```
+
+```{r}
+Q18 <- round(cor(txhousing_clean$sales, txhousing_clean$median, 
+                 use = 'complete.obs'),2)
+```
+
+```{r}
+options(scipen=999)
+modl2 <- lm(median~sales+month, data=txhousing_clean)
+summary(modl2)
+```
