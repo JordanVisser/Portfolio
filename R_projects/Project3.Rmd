@@ -1,0 +1,140 @@
+---
+title: "Project 3"
+author: "Jordan Visser"
+date: "2023-08-16"
+output: html_document
+---
+
+```{r}
+require("httr")
+require("rvest")
+
+library(httr)
+library(rvest)
+
+get_wiki_covid19_page <- function() {
+  wiki_base_url <- "https://en.wikipedia.org/w/index.php"
+  
+  query_params <- list(
+    title ="Template:COVID-19_testing_by_country")
+  
+  response <- GET(url = wiki_base_url, query = query_params)
+  
+  return(response)
+}
+
+get_wiki_covid19_page()
+
+root_html <- read_html(get_wiki_covid19_page())
+
+htmltable <- html_table(root_html)
+
+data_frame <- as.data.frame(htmltable)
+
+data_frame
+
+summary(data_frame)
+
+```
+
+```{r}
+preprocess_covid_data_frame <- function(data_frame) {
+  data_frame <- data_frame[, -6]
+  data_frame <- data_frame[1:172,3:9]
+  names(data_frame) <- c("country","date","tested","confirmed","confirmed.tested.ratio","tested.population.ratio","confirmed.population.ratio")
+  data_frame$country <- as.factor(data_frame$country)
+  data_frame$date <- as.factor(data_frame$date)
+  data_frame$tested <- as.numeric(gsub(",","",data_frame$tested))
+  data_frame$confirmed <- as.numeric(gsub(",","",data_frame$confirmed))
+  data_frame$'confirmed.tested.ratio' <- as.numeric(gsub(",","",data_frame$`confirmed.tested.ratio`))
+  data_frame$'tested.population.ratio' <- as.numeric(gsub(",","",data_frame$`tested.population.ratio`))
+    data_frame$'confirmed.population.ratio' <- as.numeric(gsub(",","",data_frame$`confirmed.population.ratio`))
+  return(data_frame)
+}
+preprocess_covid_data_frame(data_frame)
+
+clean_data_frame <- preprocess_covid_data_frame(data_frame)
+```
+
+```{r}
+summary(clean_data_frame)
+```
+
+```{r}
+wd <- getwd()
+file_path <- paste(wd, sep="", "/clean_data_frame.csv")
+cleandatacsv <- write.csv(clean_data_frame, file = file_path, row.names = FALSE)
+
+print(file_path)
+file.exists(file_path)
+```
+
+```{r}
+cleandatacsv <- read.csv("clean_data_frame.csv")
+
+```
+
+```{r}
+subset_data <- cleandatacsv[5:10,c("country","confirmed")]
+```
+
+```{r}
+totalconfirmed <- sum(cleandatacsv$confirmed)
+totaltested <- sum(cleandatacsv$tested)
+
+ratio <- totalconfirmed / totaltested
+```
+
+```{r}
+country <- as.character(cleandatacsv$country)
+sorted_a_z <- sort(country)
+sorted_z_a <- sort(country, decreasing = TRUE)
+print(sorted_z_a)
+
+```
+
+```{r}
+matches <- grep("United.+", cleandatacsv$country, value = TRUE)
+print(matches)
+```
+
+```{r}
+compareddata <- cleandatacsv[165:166, c("country","confirmed", "confirmed.population.ratio")]
+
+confirmed_population_1 <- compareddata$confirmed[1]
+confirmed_population_2 <- compareddata$confirmed[2]
+
+if (confirmed_population_1 > confirmed_population_2){
+  print("United Kingdom has a bigger population")
+}else{
+  print("United States has a bigger population")
+}
+```
+
+```{r}
+threshold <- 0.01
+countries_low_risk <- cleandatacsv$country[cleandatacsv$confirmed.population.ratio < threshold]
+if (length(countries_low_risk) > 0) {
+  cat("Countries with confirmed to population ratio less than", threshold, ":\n")
+  cat(countries_low_risk, sep = "\n")
+} else {
+  cat("No countries found with confirmed to population ratio less than", threshold, ".\n")
+}
+```
+
+```{r}
+selected_rows1 <- cleandatacsv[165:166, ]
+ggplot(selected_rows1, aes(x = country, y = confirmed.population.ratio)) + 
+  geom_bar(stat = "identity") +
+  labs(
+    title = "Confirmed population ratio between the UK and USA",
+    x = "Country",
+    y = "Values"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+
+```
+
